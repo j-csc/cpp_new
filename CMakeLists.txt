@@ -1,39 +1,25 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.14)
 
-project(MyProject)
-
-# Add your source files here
-set(SOURCES
-    src/main.cpp
+# --- Project configuration ---
+project(
+    MyProject
+    VERSION 1.0.0
+    LANGUAGES CXX
 )
 
-# Add your header files here
-set(HEADERS
-)
+# ---- Set C++ standard ----
 
-# Add any additional libraries you need here
-set(LIBRARIES
-)
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_EXPERIMENTAL_CXX_MODULE_CMAKE_API "2182bf5c-ef0d-489a-91da-49dbc3090d2a")
+set(CMAKE_EXPERIMENTAL_CXX_MODULE_DYNDEP 1)
+set(CMAKE_CXX_EXTENSIONS Off)
 
-# Add any additional include directories you need here
-set(INCLUDE_DIRS
-)
+# Integrate vcpkg
+set(CMAKE_TOOLCHAIN_FILE "${CMAKE_SOURCE_DIR}/vcpkg/scripts/buildsystems/vcpkg.cmake"
+    CACHE STRING "Vcpkg toolchain file")
 
-# Add any additional linker flags you need here
-set(LINKER_FLAGS
-)
+# ---- Add subdirectories ----
 
-# Set the output directory for the executable
-set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
-
-# Add the executable target
-add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
-
-# Link any additional libraries
-target_link_libraries(${PROJECT_NAME} ${LIBRARIES})
-
-# Add any additional include directories
-target_include_directories(${PROJECT_NAME} PUBLIC ${INCLUDE_DIRS})
-
-# Add any additional linker flags
-target_link_libraries(${PROJECT_NAME} ${LINKER_FLAGS})
+add_subdirectory(src/client)
+add_subdirectory(src/server)
+add_subdirectory(src/core)
