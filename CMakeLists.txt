@@ -1,5 +1,5 @@
 # Build All C++ Projects with CMake
-cmake_minimum_required(VERSION 3.14)
+cmake_minimum_required(VERSION 3.14...3.22)
 
 # --- Project configuration ---
 project(

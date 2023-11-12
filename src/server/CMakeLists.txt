@@ -12,4 +12,4 @@ add_executable(server main.cpp)
 
 # Link the core library and any other libraries needed
 find_package(fmt CONFIG REQUIRED)
-target_link_libraries(server PRIVATE fmt::fmt)
+target_link_libraries(server PRIVATE fmt::fmt core)
